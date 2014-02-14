@@ -22,6 +22,11 @@ class Task < ActiveRecord::Base
     save
   end
 
+  def self.delete_index(index)
+    task_id = self.all[index].id
+    delete_task
+  end
+
   def delete_task(id)
     self.find(id).destroy
   end
