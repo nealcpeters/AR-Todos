@@ -22,10 +22,10 @@ class Task < ActiveRecord::Base
     save
   end
 
-  def self.delete_index(index)
-    task_id = self.all[index].id
-    delete_task
-  end
+  # def self.delete_index(index)
+  #   task_id = self.all[index].id
+  #   delete_task(task_id)
+  # end
 
   def delete_task(id)
     self.find(id).destroy
@@ -38,6 +38,6 @@ class Task < ActiveRecord::Base
 
   def to_s
     compl = complete == 0 ?  " " : "X"
-    "[#{compl}] #{contents}"
+    "[#{compl}] #{contents} created on: #{created_at}"
   end
 end
