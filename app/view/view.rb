@@ -2,13 +2,14 @@
 # puts "Put your application code in #{File.expand_path(__FILE__)}"
 
 class View
-
   def welcome
-    puts "Welcome to ToDoList! What would you like to do? (Type 'help' at anytime for a list of commands.)"
+    puts "----------"
+    puts "Welcome to ToDoList! What would you like to do?"
+    puts "----------"
   end
 
   def quit
-    puts "Goodbye"
+    puts "Goodbye! Have a great day!"
   end
 
   def print_tasks(tasks)
@@ -16,16 +17,18 @@ class View
   end
 
   def menu
+    puts
     puts  <<-PAR
-        Here are your options:
-        1  - Create a task
-        2  - Set a task to completed
-        3  - Set a task to incomplete
-        4  - See all tasks
-        5  - Delete a task
-        6  - Quit
+Here are your options:
 
-        Input a number:
+  1  - Create a task
+  2  - Set a task to complete
+  3  - Set a task to incomplete
+  4  - Change a task's contents
+  5  - See all tasks
+  6  - Delete a task
+  7  - Quit
+
       PAR
   end
 
@@ -37,11 +40,11 @@ class View
     puts "Insert the task number:"
   end
 
-  def complete_task_menu
+  def complete_task
     puts "Choose a task to complete!"
   end
 
-  def incomplete_menu
+  def incomplete_task
     puts "Choose a task to set as incomplete!"
   end
 
@@ -50,15 +53,23 @@ class View
   end
 
   def create_task_menu
+    puts
     puts "Please input the contents of the task:"
+    puts
+  end
+
+  def task_added
+    puts
+    puts "Your task has been added!"
+    puts
   end
 
   def get_input
-    print "input:   "
+    print "Your input: "
     gets.chomp
   end
 end
 
 # ToDoListUI.new
-bob = View.new
-puts bob.menu
+#bob = View.new
+#puts bob.menu

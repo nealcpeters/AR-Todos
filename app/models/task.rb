@@ -27,7 +27,7 @@ class Task < ActiveRecord::Base
   #   delete_task(task_id)
   # end
 
-  def delete_task(id)
+  def self.delete_task(id)
     self.find(id).destroy
   end
 
@@ -38,6 +38,6 @@ class Task < ActiveRecord::Base
 
   def to_s
     compl = complete == 0 ?  " " : "X"
-    "[#{compl}] #{contents} created on: #{created_at}"
+    "[#{compl}] #{contents}"
   end
 end
