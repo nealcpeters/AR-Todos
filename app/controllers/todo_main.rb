@@ -15,6 +15,14 @@ class ToDoListUI
     sanitize_user_input
   end
 
+  def get_command
+    input = gets.chomp
+    if input == 'help'
+      help_options
+    end
+    sanitize_user_input
+  end
+
   # def sanitize_user_input
   #   view.check_user_input
   # end
