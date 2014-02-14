@@ -4,34 +4,7 @@ require_relative 'app/controllers/todo_list'
 
 puts "Put your application code in #{File.expand_path(__FILE__)}"
 
-class ToDoListUI
 
-  attr_reader :view
-
-  def initialize
-    @view = View.new
-    view.welcome
-    run!
-  end
-
-  def run!
-    grab_user_input
-    sanitize_user_input
-  end
-
-  # def sanitize_user_input
-  #   view.check_user_input
-  # end
-
-  def grab_user_input
-    view.get_command
-  end
-
-  def update_task(input)
-
-  end
-
-end
 
 class View
   def initialize
