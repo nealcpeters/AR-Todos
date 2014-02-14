@@ -11,15 +11,16 @@ class ToDoListUI
   end
 
   def run!
-    #master loop
+    view.menu
     while true
-      view.menu
       handle_command(view.get_input)
     end
   end
 
   def handle_command(input)
     case sanitize_input(input)
+    when 'help'
+      view.menu
     when '1'
       view.create_task_menu
       TodoElement.add_task(view.get_input)
@@ -28,17 +29,32 @@ class ToDoListUI
       view.complete_task
       view.print_tasks(TodoElement.get_all_tasks)
       task_num = view.get_input
-      TodoElement.update_task(task_num,'complete', true)
+      if (1..Task.all.length).include?(task_num.to_i)
+        TodoElement.update_task(task_num,'complete', false)
+        view.task_completed
+      else
+        view.invalid_input
+        view.menu
+        handle_command(view.get_input)
+      end
     when '3'
       view.incomplete_task
       view.print_tasks(TodoElement.get_all_tasks)
       task_num = view.get_input
-      TodoElement.update_task(task_num,'complete', false)
+      if (1..Task.all.length).include?(task_num.to_i)
+        TodoElement.update_task(task_num,'complete', false)
+        view.task_uncomplete
+      else
+        view.invalid_input
+        view.menu
+        handle_command(view.get_input)
+      end
     when '4'
       view.choose_task
       task_num = view.get_input
       view.update_menu
       TodoElement.update_task(task_num,"text",view.get_input)
+      view.text_updated
     when '5'
       view.print_tasks(TodoElement.get_all_tasks)
     when '6'
@@ -50,7 +66,9 @@ class ToDoListUI
     end
   end
 
-   def sanitize_input(input)
-     input.gsub(/\D/,'')
-   end
+  def sanitize_input(input)
+    return input.gsub(/\D/,'') if input != 'help'
+    return input
+  end
+
 end
