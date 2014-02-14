@@ -3,8 +3,19 @@
 
 class View
 
-  def menu
+  def welcome
+    puts "Welcome to ToDoList! What would you like to do? (Type 'help' at anytime for a list of commands.)"
+  end
 
+  def quit
+    puts "Goodbye"
+  end
+
+  def print_tasks(tasks)
+    tasks.each_with_index{|task,index| puts "#{index}.\t#{task}"}
+  end
+
+  def menu
     puts  <<-PAR
         Here are your options:
         1  - Create a task
@@ -18,21 +29,34 @@ class View
       PAR
   end
 
-  def welcome
-    puts "Welcome to ToDoList! What would you like to do? (Type 'help' at anytime for a list of commands.)"
+  def update_menu
+    puts "Insert the text you want to change."
   end
 
-  def quit
-    puts "Goodbye"
+  def choose_task
+    puts "Insert the task number:"
   end
 
-  def print_all_tasks(tasks)
-    tasks.each_with_index{|task,index| puts "#{index}.\t#{task}"}
+  def complete_task_menu
+    puts "Choose a task to complete!"
   end
 
+  def incomplete_menu
+    puts "Choose a task to set as incomplete!"
+  end
 
+  def delete_menu
+    puts "Choose a task to delete!"
+  end
 
+  def create_task_menu
+    puts "Please input the contents of the task:"
+  end
 
+  def get_input
+    print "input:   "
+    gets.chomp
+  end
 end
 
 # ToDoListUI.new
