@@ -4,15 +4,15 @@ require_relative '../models/task.rb'
 
 module TodoElement
 
-  def self.get_all_tasks
+  def get_all_tasks
     Task.all
   end
 
-  def self.add_task(input)
+  def add_task(input)
     Task.create(complete: 0, contents: input)
   end
 
-  def self.update_task(id, field, content)
+  def update_task(id, field, content)
     Task.grab_task(id)
     if field == "text"
       Task.update_content(content)
@@ -24,23 +24,12 @@ module TodoElement
       end
     end
   end
-      #tell UI to raise error to user, show valid options
 
-  #   end
-  #   Task.
-  #   # update_complete
-  #   # update_text
-  # end
-
-  # def grab_task(id)
-  #   Task.grab_task(id)
-  # end
-
-  def self.delete_task(active_record_object, task_number)
-    Task.delete_task(self.generate_hash(active_record_object)[task_number])
+  def delete_task(active_record_object, task_number)
+    Task.delete_task(generate_hash(active_record_object)[task_number])
   end
 
-  def self.generate_hash(active_record_object)
+  def generate_hash(active_record_object)
     index_task_id = {}
     active_record_object.each_with_index do |record, index|
       index_task_id[index+1] = record.id
