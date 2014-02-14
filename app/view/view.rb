@@ -12,7 +12,7 @@ class View
   end
 
   def print_tasks(tasks)
-    tasks.each_with_index{|task,index| puts "#{index}.\t#{task}"}
+    tasks.each_with_index{|task,index| puts "#{index + 1}.\t#{task}"}
   end
 
   def menu
