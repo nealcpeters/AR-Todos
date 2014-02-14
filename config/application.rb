@@ -9,6 +9,8 @@ APP_NAME = APP_ROOT.basename.to_s
 
 DB_PATH  = APP_ROOT.join('db', APP_NAME + ".sqlite3").to_s
 
+VIEW_PATH = APP_ROOT.join('app/view', 'view.rb').to_s
+
 if ENV['DEBUG']
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
